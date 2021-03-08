@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Homework 5</title>
+    </head>
+    <body>
+        <script language="javascript">
+            
+            var lottery= new Array(5);
+            for (i = 0; i < 5; i++)
+            {
+                lottery[i] = Math.floor(Math.random() * 48 + 1)
+            }
+            
+            for (i = 0; i < 5; i++) 
+            {
+                for (x = 0; x < 5; x++)
+                {
+                    if (x != i)
+                    {
+                    while (lottery[x] == lottery[i])
+                    {
+                        lottery[x] = Math.floor(Math.random() * 48 + 1);
+                    }
+                    }
+                }
+            }
+        
+            lottery.sort(function(a, b){return a-b});
+
+            lotterylucky =  Math.floor(Math.random() * 18 + 1)
+        
+            document.write("The lottery numbers are: ");            
+            
+            for (i = 0; i < 5; i++)
+            {
+                document.write(lottery[i] + " ");
+            }
+            
+            document.write("<br/> The lucky ball number is: ");
+            document.write(lotterylucky + "<br/>" + "<br/>");
+            
+            
+            var numbers = prompt("Enter your winning numbers").split(" ")
+            numbers.sort(function(a, b){return a-b});
+
+            var luckyB = prompt("Enter your lucky ball number")
+            
+            document.write("Your numbers are: ");
+            for (a = 0; a < 5; a++)
+            {
+                document.write(numbers[a] + " ");
+            }
+            
+            document.write("<br/> Your lucky ball number : ");
+            document.write(luckyB + "<br/>");
+            
+            count = 0;
+            for (i = 0; i < 5; i++)
+            {
+                for (x = 0; x < 5; x++)
+                {
+                    if (lottery[i] == numbers[x])
+                    count++;
+                }
+            }
+            
+            document.write("<br/> You got " + count + " numbers right! <br/>");
+            document.write(luckyB == lotterylucky ? "You got the Lucky Ball Number " + lotterylucky + " right!" 
+            : "You did not get the Lucky Ball Number " + lotterylucky + " right!")
+            
+            document.write("<br/> <br/>");
+            
+            if ((count == 5) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $7,000 a WEEK for Life!")
+            
+            if ((count == 5) && (luckyB != lotterylucky))
+                document.write("Congratulations! You win $25,000 w YEAR for Life!")
+            
+            if ((count == 4) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $5,000!")     
+            
+            if ((count == 4) && (luckyB != lotterylucky))
+                document.write("Congratulations! You win $200!")        
+
+            if ((count == 3) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $150!")     
+
+            if ((count == 3) && (luckyB != lotterylucky))
+                document.write("Congratulations! You win $20!") 
+    
+            if ((count == 2) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $25!")     
+            
+            if ((count == 2) && (luckyB != lotterylucky))
+                document.write("Congratulations! You win $3!") 
+                
+            if ((count == 1) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $6!")     
+
+            if ((count == 0) && (luckyB == lotterylucky))
+                document.write("Congratulations! You win $4!")  
+                
+            if (((count == 0) && (luckyB != lotterylucky)) ||
+                ((count == 1) && (luckyB != lotterylucky)))
+                document.write("Sorry :( You win NOTHING!")  
+        </script>
+    </body>
+</html>
